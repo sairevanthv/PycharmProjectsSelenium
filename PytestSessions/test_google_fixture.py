@@ -17,8 +17,10 @@ def init_driver():
     print("-------------tear down----------------")
     driver.quit()
 
-def test_google_title(init_driver):
+@pytest.mark.usefixtures("init_driver")
+def test_google_title():
     assert driver.title == "Google"
 
-def test_google_url(init_driver):
+@pytest.mark.usefixtures("init_driver")
+def test_google_url():
     assert driver.current_url == "https://www.google.com/?gws_rd=ssl"
